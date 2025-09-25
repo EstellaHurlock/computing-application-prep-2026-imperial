@@ -24,6 +24,37 @@ EOF
 cat > STUDY_LOG.md <<'EOF'
 # Study Log
 
+## 2025-09-25
+**Focus:** Proof by cases, Strong Induction. Harvard week 0.
+
+**Topics covered**
+- Proof By Cases
+- Strong Induction
+- Tautology
+- Computer science foundations basic concepts. 
+
+**Work produced**
+- Notes added in `maths/notes.md`
+- Handwritten evidence planned in `maths/evidence/2025-09-22/` (photos/scans)
+
+**Time:** ~38 hours total (update)
+EOF
+
+# Maths notes
+cat > maths/notes.md <<'EOF'
+# Maths Notes – 2025-09-22
+
+- **Proof By Cases**: For any proposition C, the statement C or not C is a tautology, i.e., always true. So P is equivalent to True implies P, which is equivalent to (C or not C) implies P , which can be split into (C implies P ) and (not C implies P ). So to prove P, it’s enough to show that C implies P AND not C implies P. 'since S is true in both cases and these cases are exhaustive, S must be true.'
+- **Strong Implication**: In a proof by induction, there are two parts: (1) the “base case”, which is the proof that P (0) holds, and (2) the “inductive step”, which is the proof that ∀n, P (n) =⇒ P (n + 1). Notice that in the inductive step, in order to prove P (n + 1) we may only assume the truth of P(n). The principle of strong induction says that this requirement can be relaxed:
+- ## Proof techniques — quick notes
+- **Existential proof (∃x P(x))** Goal: Show there exists an x with property P., Method:Construct a witness \(x^\*\) and prove \(P(x^\*)\).
+- **Universal proof (∀x P(x))**Goal: Show every x has property P. Method: Let x be arbitrary, prove \(P(x)\) without using any special facts about x.
+- **Implication by direct argument (P → Q)** Goal:* Prove “if P then Q”. Method: Assume P, logically derive Q.
+- **Implication by contrapositive** Fact: \(P \rightarrow Q\) is equivalent to ¬Q → ¬P (not \(Q \rightarrow P\)). Method: Prove ¬Q ⇒ ¬P instead; often easier.
+- **Proof by contradiction** Goal: Prove P. Method: Assume ¬P and derive a contradiction (False, or some \(R \land \lnot R\)). Hence P must be true.
+- **Induction on ℕ (∀n∈ℕ P(n))** 1: Base case: prove \(P(0)\) (or \(P(1)\), depending on indexing). 2: Inductive step: assume \(P(k)\) (IH) and prove \(P(k+1)\).
+- **CS50.ai**: Own personal ai we can use when on CS50. specific to the course. 
+
 ## 2025-09-24
 **Focus:** Eigenvectors, Eigenbasis. Harvard week 0.
 
