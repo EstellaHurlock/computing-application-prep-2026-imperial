@@ -24,6 +24,59 @@ EOF
 cat > STUDY_LOG.md <<'EOF'
 # Study Log
 
+## 2025-09-26
+**Focus:** Diagonalisation, PageRank. 
+
+**Topics covered**
+- Eigenbasis example
+- Page rank introduction
+- Page rank lab 
+
+**Work produced**
+- Notes added in `maths/notes.md`
+- Handwritten evidence planned in `maths/evidence/2025-09-22/` (photos/scans)
+- Code snipped referenced from Imperial LAB
+
+**Time:** ~42 hours total (update)
+EOF
+
+# PageRank with damping 
+# Minimal PageRank (power iteration)
+import numpy as np
+
+def pagerank(L, d=0.85, tol=1e-6, max_iter=1000):
+    n = L.shape[0]
+    J = np.ones((n, n)) / n
+    M = d * L + (1 - d) * J
+    r = np.ones(n) / n  # start uniform
+
+    for _ in range(max_iter):
+        r_next = M @ r
+        if np.linalg.norm(r_next - r, 1) < tol:
+            break
+        r = r_next
+
+    return 100 * r / r.sum()  # percentage style
+
+# Example (4-node cycle):
+# A→B→C→D→A
+L = np.array([[0,0,0,1],
+              [1,0,0,0],
+              [0,1,0,0],
+              [0,0,1,0]], dtype=float)
+
+print(pagerank(L, d=0.85))
+
+
+# Maths notes
+cat > maths/notes.md <<'EOF'
+# Maths Notes – 2025-09-26
+
+- **PageRank introduction**: Loops, matrices, connections, dead ends, internat mapping
+- **PageRank LAB**: Make sure to keep the code lines indented correctly, use n for number values. 
+- **Module 5 review**: Diagonalisation, CD^nC^-1 =^n. λ^2 - (a+d)λ + (ad - bc) = 0, determinants, eigenbasis eigenvectors
+
+
 ## 2025-09-25
 **Focus:** Proof by cases, Strong Induction. Harvard week 0.
 
@@ -42,7 +95,7 @@ EOF
 
 # Maths notes
 cat > maths/notes.md <<'EOF'
-# Maths Notes – 2025-09-22
+# Maths Notes – 2025-09-25
 
 - **Proof By Cases**: For any proposition C, the statement C or not C is a tautology, i.e., always true. So P is equivalent to True implies P, which is equivalent to (C or not C) implies P , which can be split into (C implies P ) and (not C implies P ). So to prove P, it’s enough to show that C implies P AND not C implies P. 'since S is true in both cases and these cases are exhaustive, S must be true.'
 - **Strong Implication**: In a proof by induction, there are two parts: (1) the “base case”, which is the proof that P (0) holds, and (2) the “inductive step”, which is the proof that ∀n, P (n) =⇒ P (n + 1). Notice that in the inductive step, in order to prove P (n + 1) we may only assume the truth of P(n). The principle of strong induction says that this requirement can be relaxed:
@@ -73,7 +126,7 @@ EOF
 
 # Maths notes
 cat > maths/notes.md <<'EOF'
-# Maths Notes – 2025-09-22
+# Maths Notes – 2025-09-24
 
 - **Eigenvectors vs Eigenvalues**: Eigen vectors are for if the vector stays in the same span, no matter if it flips 180. Eigenvalues are for the scale by how much the vector has changed, e.g if x1 its eigenvalue is 1, if x2 eigenvalue 2.  
 - **Calculating Eigenvectors**: \χA​(λ)=λ2−(a+d)λ+(ad−bc)=0, Example: For A=[[3,4],[0,5]], characteristic polynomial: λ^2 - 8λ + 15; eigenvalues: 3 and 5.
@@ -155,7 +208,7 @@ EOF
 
 # Maths notes
 cat > maths/notes.md <<'EOF'
-# Maths Notes – 2025-09-22
+# Maths Notes – 2025-09-23
 
 - **Reflection in a plane**: \( r' = E * T_E * E^{-1} * r )
 - **Proof by Induction**: Proof (we'll use), Base Case(more than 1), Inductive step (suppose), By the inductive process (proofs algebra), Completes inductive step (since LHS we have RHS)
